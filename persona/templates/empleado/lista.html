@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<h1> Lista de empleados</h1>
+
+<div class="listaempleados">
+    <h2><strong>Apellidos</strong></h2>
+    <h2><strong>Nombres</strong></h2>
+    <h2><strong>DNI</strong></h2>
+    <h2><strong>Acciones</strong></h2>
+    {% for empleado in empleados %}
+    <p>{{empleado.apellidos}}</p>
+    <p>{{empleado.nombres}}</p>
+    <p>{{empleado.dni}}</p>
+    <p>
+        <a href="{%url 'empleado_app:Detalle del empleado' empleado.id%}">Ver</a>
+        <a href="{%url 'empleado_app:Modificar empleado' empleado.id%}">Modificar</a>
+        <a href="{%url 'empleado_app:Baja de empleado' empleado.id%}">Eliminar</a>
+    </p>
+    {% endfor %}
+
+</div>
+
+{% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+        <a href="?page={{page_obj.previous_page_number}}">Atras</a>
+    {% endif %}
+
+    {% for pagina in paginator.page_range %}
+    {% ifequal pagina page_obj.number %}
+        {{pagina}}
+    {% else %}
+        <a href="?page={{pagina}}">{{pagina}}</a>
+    {% endifequal %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+        <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+    {% endif %}
+
+{% endif %}
+
+{% endblock content %}
+    
+

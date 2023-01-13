@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1>Detalle del empleado </h1>
+
+{% if detalle.avatar %}
+    <img src="{{detalle.avatar.url}}" alt="">
+{% else %}
+    <img src="{% static 'img/imagen.jpg' %}" alt=""
+{% endif %}
+
+<h2>Datos: </h2>
+
+<ul>
+    <li> Apellidos: {{detalle.apellidos}} </li>
+    <li> Nombres: {{detalle.nombres}} </li>
+    <li> Dni: {{detalle.dni}} </li>
+    <li> Area: {{detalle.area.nombre_corto}} </li>
+
+    <h3>Habilidades </h3>
+
+    <ul>
+            
+        {% for habilidad in detalle.habilidades.all %}
+        <li> {{habilidad}} </li>   
+        {% endfor %}
+                
+    </ul>
+</ul>
+    
+{% endblock content %}
+    
