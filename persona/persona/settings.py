@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
-with open ("secret.json") as f:
-    secret = json-load(f.read())
+with open("secret.json") as f:
+    secret = json.loads(f.read())
 
-def get_secret(secret_name,secrets=secret):
+def get_secret(secret_name, secrets=secret):
     try:
         return secrets[secret_name]
     except:

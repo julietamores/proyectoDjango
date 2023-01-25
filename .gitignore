@@ -1,1 +1,7 @@
 persona/secret.json
+*.log
+*.pot
+*.pyc
+__pycache__
+db.postgress
+media

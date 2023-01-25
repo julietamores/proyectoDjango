@@ -48,6 +48,32 @@ urlpatterns = [
         views.EmpleadoDeleteView.as_view(),
         name='Baja de empleado'
     ),
+
+    path(
+        'login/',
+        views.LoginUser.as_view(),
+        name='login-user'
+    ),
+    path(
+        'logout/', 
+        views.LogoutView.as_view(),
+        name='user-logout',
+    ),
+    path(
+        'panel/', 
+        views.Panel.as_view(), 
+        name='user-panel'
+    ),
+    path(
+        'add/', 
+        views.EmpleadoCreateView.as_view(), 
+        name='agregar'
+    ),
+    path(
+        'listaLog/', 
+        views.EmpleadoListView.as_view(), 
+        name='lista'
+    ),
 ]
 
 
